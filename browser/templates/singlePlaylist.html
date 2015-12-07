@@ -1,5 +1,5 @@
 <div>
-    <h3>{{ playlist.name }}</h3>
+    <h3>{{ theSinglePlaylist.name }}</h3>
     <table class='table' ng-show="playlist.songs.length">
         <thead>
             <tr>
@@ -22,6 +22,27 @@
             </tr>
         </tbody>
     </table>
-    <small ng-hide="playlist.songs.length">No songs.</small>
+    <small ng-hide="playlist.songs.length">No songs. {{ theSinglePlaylist._id }}</small>
     <hr>
+</div>
+
+<div class="well">
+    <form class="form-horizontal" name="playlistForm">
+        <fieldset>
+            <legend>New Playlist</legend>
+            <div class="alert alert-warning" ng-show="playlistForm.$invalid && playlistForm.$dirty">Please enter a valid title (max length 16)</div>
+            <h3>{{ playlistName.name }}</h3>
+            <div class="form-group">
+                <label class="col-xs-2 control-label">Title</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" ng-model="playlistName.name" ng-maxlength="16" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-10 col-xs-offset-2">
+                    <button type="submit" class="btn btn-success" ng-click="addPlaylist(playlistName)" ng-disabled="playlistForm.$invalid">Create Playlist</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
 </div>
