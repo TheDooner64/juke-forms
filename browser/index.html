@@ -27,6 +27,7 @@
 	<script src="/js/states/artist-albums.js"></script>
 	<script src="/js/states/artist-songs.js"></script>
 	<script src="/js/states/playlist.js"></script>
+	<script src="/js/states/singlePlaylist.js"></script>
 </head>
 <body ng-app="juke">
 	<div id="main" class="container-fluid">
@@ -44,12 +45,15 @@
 					</h4>
 				</section>
 				<hr>
-				<section>
-					<h4 class="text-muted">PLAYLISTS</h4>
-					<p>
-						<a class="btn btn-primary btn-block" ui-sref="newPlaylist"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
-					</p>
-				</section>
+				<div ng-controller="PlaylistCtrl">
+					<section>
+						<h4 class="text-muted">PLAYLISTS</h4>
+						<p ng-repeat="playlist in playlists"><a ui-sref="singlePlaylist({ playlistId: playlist._id })"> {{ playlist.name }} </a></p>
+						<p>
+							<a class="btn btn-primary btn-block" ui-sref="newPlaylist"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
+						</p>
+					</section>
+				</div>
 			</sidebar>
 		</div>
 

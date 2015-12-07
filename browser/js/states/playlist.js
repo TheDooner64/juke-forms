@@ -3,5 +3,5 @@ app.config(function ($stateProvider) {
     url: '/playlists/new',
     templateUrl: '/templates/playlist.html',
     controller: 'PlaylistCtrl'
-  });
+  })
 });
