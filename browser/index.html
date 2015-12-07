@@ -14,16 +14,19 @@
 	<script src="/js/controllers/player.js"></script>
 	<script src="/js/controllers/artist.js"></script>
 	<script src="/js/controllers/artists.js"></script>
+	<script src="/js/controllers/playlist.js"></script>
 	<script src="/js/factories/player.js"></script>
 	<script src="/js/factories/album.js"></script>
 	<script src="/js/factories/song.js"></script>
 	<script src="/js/factories/artist.js"></script>
+	<script src="/js/factories/playlist.js"></script>
 	<script src="/js/states/albums.js"></script>
 	<script src="/js/states/album.js"></script>
 	<script src="/js/states/artists.js"></script>
 	<script src="/js/states/artist.js"></script>
 	<script src="/js/states/artist-albums.js"></script>
 	<script src="/js/states/artist-songs.js"></script>
+	<script src="/js/states/playlist.js"></script>
 </head>
 <body ng-app="juke">
 	<div id="main" class="container-fluid">
@@ -44,7 +47,7 @@
 				<section>
 					<h4 class="text-muted">PLAYLISTS</h4>
 					<p>
-						<a class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
+						<a class="btn btn-primary btn-block" ui-sref="newPlaylist"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
 					</p>
 				</section>
 			</sidebar>
