@@ -1,6 +1,6 @@
 <div>
     <h3>{{ theSinglePlaylist.name }}</h3>
-    <table class='table' ng-show="playlist.songs.length">
+    <table class='table' ng-show="theSinglePlaylist.songs.length">
         <thead>
             <tr>
                 <th></th>
@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="song in playlist.songs" ng-class="{active: isCurrent(song)}">
+            <tr ng-repeat="song in theSinglePlaylist.songs" ng-class="{active: isCurrent(song)}">
                 <td>
                     <button ng-hide="isCurrent(song)" ng-click="start(song)" class="btn btn-default btn-xs">
                         <span class="glyphicon glyphicon-play"></span>
@@ -22,25 +22,23 @@
             </tr>
         </tbody>
     </table>
-    <small ng-hide="playlist.songs.length">No songs. {{ theSinglePlaylist._id }}</small>
+    <small ng-hide="theSinglePlaylist.songs.length">No songs.</small>
     <hr>
 </div>
 
 <div class="well">
-    <form class="form-horizontal" name="playlistForm">
+    <form class="form-horizontal" name="songForm">
         <fieldset>
-            <legend>New Playlist</legend>
-            <div class="alert alert-warning" ng-show="playlistForm.$invalid && playlistForm.$dirty">Please enter a valid title (max length 16)</div>
-            <h3>{{ playlistName.name }}</h3>
+            <legend>Add to Playlist</legend>
             <div class="form-group">
-                <label class="col-xs-2 control-label">Title</label>
+                <label class="col-xs-2 control-label">Song</label>
                 <div class="col-xs-10">
-                    <input class="form-control" type="text" ng-model="playlistName.name" ng-maxlength="16" required>
+                    <select class="form-control" ng-options="song.name for song in totalSongs" ng-model="selectedSong" required></select>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-xs-10 col-xs-offset-2">
-                    <button type="submit" class="btn btn-success" ng-click="addPlaylist(playlistName)" ng-disabled="playlistForm.$invalid">Create Playlist</button>
+                    <button type="submit" class="btn btn-success" ng-disabled="songForm.$invalid" ng-click="addNewSong(theSinglePlaylist, selectedSong)">Add Song</button>
                 </div>
             </div>
         </fieldset>

@@ -17,7 +17,4 @@ app.controller('PlaylistCtrl', function ($scope, PlaylistFactory, $state) {
     .then(function (cachedPL) {
       $scope.playlists = cachedPL;
   });
-
-
-
 });
